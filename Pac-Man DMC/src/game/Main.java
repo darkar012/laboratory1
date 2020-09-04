@@ -41,7 +41,7 @@ package game;
 				player.moveUp();
 			}
 
-			if (movLeft==true){
+			if (movDown==true){
 
 				player.moveDown();
 			}

@@ -38,19 +38,18 @@ public class Dante extends PApplet {
 		}
 
 	}
-	protected void moveUp() {
+	public void moveUp() {
+        y -= speed;
+        if(y <= 0){
+            y += speed;
+        }
+    }
 
-		y +=speed;
-		if(y >= 0){
-			y -=speed;					
-		}
-	}
-	protected void moveDown() {
+    public void moveDown() {
+        y += speed;
+        if(y >= 667){
+            y -= speed;
+        }
 
-		y +=speed;
-		if(y >= 667){
-			y -=speed;				
-		}
-	}
-
+}
 }
