@@ -7,7 +7,7 @@ public class Map1 extends PApplet{
 		  int SIDE = 15; //How big is the rectangle (30x30)
 		  PImage tile;
 		  String[] strArray1 = new String[27];
-		  char[][] map = {
+
 		  //Where X is a rectangle will be drawn. 
 		  //1,2,3 and 4 are for portals (which I didn't code yet). 
 		  //The A is an empty spot, seems like I can't leave the array empty so I filled it with A
