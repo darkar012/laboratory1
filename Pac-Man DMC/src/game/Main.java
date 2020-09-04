@@ -10,7 +10,7 @@ package game;
 		public boolean movRight;
 		public boolean movUp;
 		public boolean movDown;
-		int y;
+		int y;			
 		
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
