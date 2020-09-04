@@ -7,8 +7,8 @@ public class Wall {
 
 	PApplet app;
 	PImage tile;
-	private int x;
-	private int y;
+	public int x;
+	public int y;
 
 	public Wall (int x, int y,PApplet app) {
 		this.x = x;

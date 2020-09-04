@@ -1,7 +1,7 @@
 package game;
 
 import processing.core.PApplet;
-import processing.core.PImage;
+
 
 public class Map1 extends PApplet{
 		public Wall wall;
