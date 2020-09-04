@@ -5,12 +5,14 @@ package game;
 
 	public class Main extends PApplet{
 		PImage bg;
+		public Map1 maze;
 		public Dante player;
 		public boolean movLeft;
 		public boolean movRight;
 		public boolean movUp;
 		public boolean movDown;
-		int y;			
+		int y;
+			
 		
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
@@ -23,9 +25,11 @@ package game;
 		public void setup() {
 			bg = loadImage("map.png");
 			player = new Dante(92,92,5, this);
+			maze = new Map1();
 		}
 		public void draw() {
 			background(bg);
+			maze.paintArray();
 			player.paint();
 			if (movRight==true){
 
