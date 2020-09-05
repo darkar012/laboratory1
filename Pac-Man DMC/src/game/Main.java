@@ -25,10 +25,10 @@ package game;
 		public void setup() {
 			bg = loadImage("map.png");
 			player = new Dante(92,92,5, this);
-			maze = new Map1();
+			maze = new Map1(null, 10, 10 ,0, 200, this);
 		}
 		public void draw() {
-			background(bg);
+			background(255);
 			maze.paintArray();
 			player.paint();
 			if (movRight==true){

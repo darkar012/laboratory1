@@ -1,28 +1,49 @@
 package game;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 
 public class Map1 extends PApplet{
 		public Wall wall;
+		int [][] matrix;
+		int col,row;
+		int posX,posY;
+		int matX, matY;
+		int x,y;
+		PApplet app;
+		PImage tile;
+		
+		public Map1(int [][]matrix,int col, int row,int x, int y, PApplet app) {
+			this.matrix = matrix;
+			this.app=app;
+			this.x=x;
+			this.y=y;
+			tile= app.loadImage("./image/tile.png");
+		}
 		
 		public void paintArray() {
-		String [] map = new String []
-		{ "111111111111111111111111111",
-		  "100000000000010000000000001",
-		  "100111101111010111101111001",
-		  "100111101111010111101111001",
-		  "100000000000000000000000001",
-		  "100111101011111110101111001",
-		  "100000001000010000100000001",
-		  "111111101111010111101111111",
-		  "      101000000000101      ",
-		  "111111101011111110101111111"};
-	
-		    for (int i = 0; i<27; i++) {
+			col = 10;
+			row = 10;
+			x=15;
+			y=15;
+		    matrix  = new int [][]{
+		    	{1,1,1,1,1,1,1,1,1,1},
+				{1,0,0,2,2,2,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,0,0,0,0,0,0,0,0,1},
+				{1,1,1,1,1,1,1,1,1,1}
+			};
+		
+		    for (int i = 0; i<10; i++) {
 		      for (int j = 0; j<10; j++) { 
-		        if (map[j].charAt(i) == '1') { 
-		        	wall.drawObject();
+		        if (matrix[j][i] == 1) { 
+		        	app.image(tile,x,y);
 		        }
 		      }
 		    }
