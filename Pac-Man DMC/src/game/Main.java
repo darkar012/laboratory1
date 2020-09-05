@@ -1,34 +1,48 @@
 package game;
 
-	import processing.core.PApplet;
-	import processing.core.PImage;
+import java.util.ArrayList;
 
-	public class Main extends PApplet{
-		PImage bg;
-		public Map1 maze;
+import processing.core.PApplet;
+import processing.core.PImage;
+
+public class Main extends PApplet{
+	//PImage bg;
+	/*public Map1 maze;
 		public Dante player;
 		public boolean movLeft;
 		public boolean movRight;
 		public boolean movUp;
 		public boolean movDown;
-		int y;
-			
-		
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-			PApplet.main ("game.Main");
-		}
+		int y;*/
+	//screens
+	Menu menu;
+	NewPlayer newPlayer;
+	Score score;
+	ArrayList<String> typeName;
+	int state;
+	int posX=83;
+	int posY=292;
 
-		public void settings() {
-			size(375, 667);
-		}
-		public void setup() {
-			bg = loadImage("map.png");
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PApplet.main ("game.Main");
+	}
+
+	public void settings() {
+		size(375, 667);
+		menu=new Menu(this);
+		newPlayer= new NewPlayer(this);
+		score=new Score(this);
+		typeName= new ArrayList<String>();
+		state=1;
+	}
+	public void setup() {
+		/*bg = loadImage("map.png");
 			player = new Dante(92,92,5, this);
-			maze = new Map1(null, 10, 10 ,0, 200, this);
-		}
-		public void draw() {
-			background(255);
+			maze = new Map1(null, 10, 10 ,0, 200, this);*/
+	}
+	public void draw() {
+		/*background(255);
 			maze.paintArray();
 			player.paint();
 			if (movRight==true){
@@ -47,12 +61,27 @@ package game;
 
 			if (movDown==true){
 
-				player.moveDown();
-			}
+				player.moveDown();*/
+		switch (state) {
+		case 1:
+			menu.drawScreen();
+			break;
+		case 2:
+			newPlayer.drawScreen();
+			break;
+		case 3:
+			score.drawScreen();
+			break;
 		}
-		public void keyPressed() {
+	}
 
-			if(keyCode == RIGHT) {
+	public void keyPressed() {
+		switch(state) {
+
+		case 2:
+		}
+
+			/*if(keyCode == RIGHT) {
 				movRight = true;
 			}
 			if(keyCode == LEFT) {
@@ -79,7 +108,26 @@ package game;
 			}
 			if(keyCode == UP) {
 				movUp = false;
+			}*/
+		}
+		public void mouseClicked () {
+			PApplet.println(mouseX);
+			PApplet.println(mouseY);
+
+			switch (state) {
+			case 1:
+				if (mouseX > posX && mouseX < posX + 213
+						&& mouseY > posY && mouseY < posY+51 )	// PLAY
+					state = 2;
+
+				if (mouseX > posX && mouseX < posX + 213
+						&& mouseY > 357 && mouseY < 357 +51)  // SCORES
+					state = 3;
+
+				if (mouseX > posX && mouseX < posX + 213
+						&& mouseY > 487 && mouseY < 487 + 51) //EXIT
+					exit (); 
 			}
-	}
+		}
 	}
 

@@ -1,0 +1,25 @@
+package game;
+import processing.core.*;
+
+public class NewPlayer extends Screen {
+
+	String name;
+
+	public NewPlayer(PApplet app) {
+		super (app);
+
+		name = "Type New Name";
+
+		display = app.loadImage("/Image/newPlayer.png");
+	} 
+
+	protected void drawScreen () {
+		app.image(display, 0, 0);
+
+		app.text(name,505,360);
+	}
+	public void setName (String newName) {
+		name = newName;
+
+	}
+}

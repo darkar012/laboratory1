@@ -3,7 +3,7 @@ package game;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Screen {
+public abstract class Screen {
 	PApplet app;
 	PImage display;
 
@@ -15,10 +15,7 @@ public class Screen {
 	}
 
 
-
-
-
-	public void render () {
+	protected void DrawScreen () {
 
 		app.image(display, 0, 0);
 	}
