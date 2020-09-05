@@ -19,8 +19,8 @@ public class Main extends PApplet{
 	Menu menu;
 	NewPlayer newPlayer;
 	Score score;
+	Level1 level;
 	ArrayList<String> typeName;
-	PFont NewRocker;
 	int state;
 	int posX=83;
 	int posY=292;
@@ -35,6 +35,7 @@ public class Main extends PApplet{
 		menu=new Menu(this);
 		newPlayer= new NewPlayer(this);
 		score=new Score(this);
+		level=new Level1(this);
 		typeName= new ArrayList<String>();
 		state=1;
 	}
@@ -74,6 +75,10 @@ public class Main extends PApplet{
 		case 3:
 			score.drawScreen();
 			break;
+		case 4:
+			level.drawScreen();
+			level.paintArray();
+			break;
 		}
 	}
 
@@ -101,11 +106,15 @@ public class Main extends PApplet{
 					&& mouseY > 271 && mouseY < 271 + 38)
 
 				newPlayer.setName(String.join("", typeName));
+			
+			if (mouseX > posX && mouseX < posX + 213
+					&& mouseY > 357 && mouseY < 357 +51) 
+				state = 4;
 		case 3:
-			if (mouseX > 83 && mouseX < 83 + 184
-					&& mouseY > 271 && mouseY < 271 + 38)
+			if (mouseX > 63 && mouseX < 63 + 249
+					&& mouseY > 494 && mouseY < 494 + 56)
 
-				newPlayer.setName(String.join("", typeName));
+				state=1;
 
 		}
 	}
