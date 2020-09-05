@@ -5,6 +5,7 @@ public class NewPlayer extends Screen {
 
 	String name;
 
+
 	public NewPlayer(PApplet app) {
 		super (app);
 
@@ -15,8 +16,8 @@ public class NewPlayer extends Screen {
 
 	protected void drawScreen () {
 		app.image(display, 0, 0);
-
-		app.text(name,505,360);
+		
+		app.text(name,83,283);
 	}
 	public void setName (String newName) {
 		name = newName;

@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class Main extends PApplet{
@@ -19,6 +20,7 @@ public class Main extends PApplet{
 	NewPlayer newPlayer;
 	Score score;
 	ArrayList<String> typeName;
+	PFont NewRocker;
 	int state;
 	int posX=83;
 	int posY=292;
@@ -75,13 +77,50 @@ public class Main extends PApplet{
 		}
 	}
 
+	public void mouseClicked () {
+		PApplet.println(mouseX);
+		PApplet.println(mouseY);
+
+		switch (state) {
+		case 1:
+			if (mouseX > posX && mouseX < posX + 213
+					&& mouseY > posY && mouseY < posY+51 )
+				state = 2;
+
+			if (mouseX > posX && mouseX < posX + 213
+					&& mouseY > 357 && mouseY < 357 +51) 
+				state = 3;
+
+			if (mouseX > posX && mouseX < posX + 213
+					&& mouseY > 487 && mouseY < 487 + 51) 
+				exit (); 
+			break;
+
+		case 2:
+			if (mouseX > 83 && mouseX < 83 + 184
+					&& mouseY > 271 && mouseY < 271 + 38)
+
+				newPlayer.setName(String.join("", typeName));
+		case 3:
+			if (mouseX > 83 && mouseX < 83 + 184
+					&& mouseY > 271 && mouseY < 271 + 38)
+
+				newPlayer.setName(String.join("", typeName));
+
+		}
+	}
 	public void keyPressed() {
 		switch(state) {
 
 		case 2:
+
+			if((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z')) {
+				newPlayer.setName(String.join("", typeName));
+				typeName.add(key+"");
+			}
 		}
 
-			/*if(keyCode == RIGHT) {
+		/*if(keyCode == RIGHT) {
 				movRight = true;
 			}
 			if(keyCode == LEFT) {
@@ -109,25 +148,8 @@ public class Main extends PApplet{
 			if(keyCode == UP) {
 				movUp = false;
 			}*/
-		}
-		public void mouseClicked () {
-			PApplet.println(mouseX);
-			PApplet.println(mouseY);
-
-			switch (state) {
-			case 1:
-				if (mouseX > posX && mouseX < posX + 213
-						&& mouseY > posY && mouseY < posY+51 )	// PLAY
-					state = 2;
-
-				if (mouseX > posX && mouseX < posX + 213
-						&& mouseY > 357 && mouseY < 357 +51)  // SCORES
-					state = 3;
-
-				if (mouseX > posX && mouseX < posX + 213
-						&& mouseY > 487 && mouseY < 487 + 51) //EXIT
-					exit (); 
-			}
-		}
 	}
+}
+
+
 
