@@ -53,7 +53,8 @@ public class Main extends PApplet{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 	int col,row;
-	int posX,posY;
+	int posX = 83;
+	int posY = 291;
 	int matX, matY;
 	int x,y;
 	PImage tile;
@@ -74,8 +75,8 @@ public class Main extends PApplet{
 		state=1;
 	}
 	public void setup() {
-		col = 25;
-		row = 27;
+		 col = 25;
+		 row = 27;
 		tile= loadImage("./image/tile.png");
 		/*bg = loadImage("map.png");
 			player = new Dante(92,92,5, this);
