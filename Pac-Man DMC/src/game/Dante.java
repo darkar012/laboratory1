@@ -18,7 +18,7 @@ public class Dante extends PApplet {
 	}
 
 	protected void paint() {
-		app.image(dante,15,15);
+		app.image(dante,15,15+110);
 		//app.fill(255,0,0);
 		//app.rect(x, y, 50, 50);		
 	}

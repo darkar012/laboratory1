@@ -81,6 +81,7 @@ public class Main extends PApplet{
 			//dante.
 			level.drawScreen();
 			level.paintArray();
+			dante.paint();
 			break;
 		}
 	}
