@@ -38,7 +38,7 @@ public class Main extends PApplet{
 		score=new Score(this);
 		level=new Level1(this);
 		typeName= new ArrayList<String>();
-		dante= new Dante (posX, posY, this);
+		dante= new Dante (15, 15, 15, 125, this);
 		state=1;
 	}
 	public void setup() {
@@ -78,9 +78,10 @@ public class Main extends PApplet{
 			score.drawScreen();
 			break;
 		case 4:
-			//dante.
+			
 			level.drawScreen();
 			level.paintArray();
+			dante.paint();
 			break;
 		}
 	}
@@ -128,9 +129,45 @@ public class Main extends PApplet{
 
 			if((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z')) {
 				newPlayer.setName(String.join("", typeName));
-				typeName.add(key+"");
+				typeName.add(key+"");}
+				break;
+		case 4:
+			for (int i = 0; i < level.getRow(); i++) {
+				for (int j = 0; j < level.getCol(); j++) {
+					
+			switch (keyCode) {
+			case RIGHT:
+				if(level.getMatrix()[level.getMatY()][level.getMatX()+1]!=1) {
+					dante.getX() += 15;
+					level.matX++;
+					System.out.println(level.matY);
+					System.out.println(level.matX);
+				}
+				
+				break;
+			case LEFT:
+				if(level.getMatrix()[level.getMatY()][level.getMatX()+1]!=1) {
+					dante.x -= 15;
+					level.matX--;
+				}
+				break;
+			case UP:
+				if(level.getMatrix()[level.getMatY()+1][level.getMatX()]!=1) {
+					dante.y -= 15;
+					level.matY--;
+				}
+				break;
+			case DOWN:
+				if(level.matrix[level.matY+1][level.matX]!=1) {
+					dante.y += 15;
+					level.matY++;
+				}
+				break;
+			default:
+				break;	
 			}
-		}
+	}
+}
 
 		/*if(keyCode == RIGHT) {
 				movRight = true;
@@ -161,7 +198,9 @@ public class Main extends PApplet{
 				movUp = false;
 			}*/
 	}
+	}
 }
+
 
 
 

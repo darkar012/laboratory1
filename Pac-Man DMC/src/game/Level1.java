@@ -8,9 +8,7 @@ public class Level1 extends Screen{
 
 		int [][] matrix;
 		int col,row;
-		int posX,posY;
 		int matX, matY;
-		int x,y;
 		PImage tile;
 				
 		public Level1(PApplet app) {
@@ -27,7 +25,7 @@ public class Level1 extends Screen{
 			row = 27;
 		    matrix  = new int [][]{
 		    	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		    	{1,5,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
+		    	{1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
 		    	{1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1},
 		    	{1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1},
 		    	{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -63,5 +61,35 @@ public class Level1 extends Screen{
 		      }
 		    }
 		  }
+		public int[][] getMatrix() {
+			return matrix;
+		}
+		public void setMatrix(int[][] matrix) {
+			this.matrix = matrix;
+		}
+		public int getMatX() {
+			return matX;
+		}
+		public void setMatX(int matX) {
+			this.matX = matX;
+		}
+		public int getMatY() {
+			return matY;
+		}
+		public void setMatY(int matY) {
+			this.matY = matY;
+		}
+		public int getCol() {
+			return col;
+		}
+		public void setCol(int col) {
+			this.col = col;
+		}
+		public int getRow() {
+			return row;
+		}
+		public void setRow(int row) {
+			this.row = row;
+		}
 		}
 
