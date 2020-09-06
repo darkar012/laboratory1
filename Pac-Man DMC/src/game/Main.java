@@ -53,8 +53,8 @@ public class Main extends PApplet{
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 	int col,row;
-	int posX = 83;
-	int posY = 291;
+	int posX = 15;
+	int posY = 15;
 	int matX, matY;
 	int x,y;
 	PImage tile;
@@ -77,6 +77,8 @@ public class Main extends PApplet{
 	public void setup() {
 		 col = 25;
 		 row = 27;
+		 matY=1;
+		 matX=1;
 		tile= loadImage("./image/tile.png");
 		/*bg = loadImage("map.png");
 			player = new Dante(92,92,5, this);
@@ -133,8 +135,8 @@ public class Main extends PApplet{
 
 		switch (state) {
 		case 1:
-			if (mouseX > posX && mouseX < posX + 213
-					&& mouseY > posY && mouseY < posY+51 )
+			if (mouseX > 83 && mouseX < 83 + 213
+					&& mouseY > 291 && mouseY < 291+51 )
 				state = 2;
 
 			if (mouseX > posX && mouseX < posX + 213
@@ -172,6 +174,39 @@ public class Main extends PApplet{
 				newPlayer.setName(String.join("", typeName));
 				typeName.add(key+"");
 			}
+		case 4:
+			
+			switch (keyCode) {
+			case RIGHT:
+				if(matrix[matY][matX+1]!=1) {
+					dante.posx += 15;
+					//dante.paint();
+					matX++;
+					System.out.println(matX);
+				}
+				break;
+			case LEFT:
+				if(matrix[matY][matX-1]!=1) {
+					dante.posx -= 15;
+					matX--;
+				}
+				break;
+			case UP:
+				if(matrix[matY-1][matX]!=1) {
+					dante.posy -= 15;
+					matY--;
+				}
+				break;
+			case DOWN:
+				if(matrix[matY+1][matX]!=1) {
+					dante.posy += 15;
+					matY++;
+				}
+				break;
+			default:
+				break;
+			}
+		}
 		}
 
 		/*if(keyCode == RIGHT) {
@@ -203,7 +238,7 @@ public class Main extends PApplet{
 				movUp = false;
 			}*/
 	}
-}
+
 
 
 

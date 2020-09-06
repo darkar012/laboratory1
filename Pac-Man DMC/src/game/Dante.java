@@ -6,8 +6,8 @@ import processing.core.PImage;
 public class Dante extends PApplet {
 	PApplet app;
 	PImage dante;
-	int posx;
-	int posy;
+	int posx = 15;
+	int posy = 15;
 
 
 	public Dante(int posx, int posy, PApplet app) {
@@ -18,7 +18,7 @@ public class Dante extends PApplet {
 	}
 
 	protected void paint() {
-		app.image(dante,15,15+110);
+		app.image(dante,this.posx,this.posy+110);
 		//app.fill(255,0,0);
 		//app.rect(x, y, 50, 50);		
 	}
