@@ -15,6 +15,7 @@ public class Main extends PApplet{
 		public boolean movUp;
 		public boolean movDown;
 		int y;*/
+	Dante dante;
 	//screens
 	Menu menu;
 	NewPlayer newPlayer;
@@ -37,6 +38,7 @@ public class Main extends PApplet{
 		score=new Score(this);
 		level=new Level1(this);
 		typeName= new ArrayList<String>();
+		dante= new Dante (posX, posY, this);
 		state=1;
 	}
 	public void setup() {
@@ -76,6 +78,7 @@ public class Main extends PApplet{
 			score.drawScreen();
 			break;
 		case 4:
+			//dante.
 			level.drawScreen();
 			level.paintArray();
 			break;

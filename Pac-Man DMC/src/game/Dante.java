@@ -6,25 +6,24 @@ import processing.core.PImage;
 public class Dante extends PApplet {
 	PApplet app;
 	PImage dante;
-	int x;
-	int y;
-	int speed;
+	int posx;
+	int posy;
 
-	public Dante(int x, int y, int s, PApplet app) {
-		this.x = x;
-		this.y = y;
-		this.speed = s;
+
+	public Dante(int posx, int posy, PApplet app) {
+		this.posx = posx;
+		this.posy = posy;
 		this.app=app;
 		dante= app.loadImage("./image/dante.png");
 	}
 
 	protected void paint() {
-		app.image(dante,x,y);
+		app.image(dante,15,15);
 		//app.fill(255,0,0);
 		//app.rect(x, y, 50, 50);		
 	}
 
-	protected void moveLeft() {
+	/*protected void moveLeft() {
 		x -=speed;
 		if(x <= 0){
 			x +=speed;
@@ -51,5 +50,5 @@ public class Dante extends PApplet {
             y -= speed;
         }
 
-}
+}*/
 }
