@@ -13,10 +13,14 @@ public class Main extends PApplet{
 	NewPlayer newPlayer;
 	Score score;
 	Level1 level;
+	Win win;
 	ArrayList<String> typeName;
 	boolean point=false;
+	boolean time=false;
+	int min;
+	int sec;
 	int state;
-	int puntaje = 0;
+	int pointScore = 0;
 	int [][] matrix= {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -64,11 +68,14 @@ public class Main extends PApplet{
 		newPlayer= new NewPlayer(this);
 		score=new Score(this);
 		level=new Level1(this);
+		win= new Win(this);
 		typeName= new ArrayList<String>();
 		dante= new Dante (posX, posY, this);
 		state=1;
 	}
 	public void setup() {
+		min=0;
+		sec=0;
 		col = 25;
 		row = 27;
 		matY=1;
@@ -89,6 +96,7 @@ public class Main extends PApplet{
 			score.drawScreen();
 			break;
 		case 4:
+			
 			level.drawScreen();
 			for (int i = 0; i<25; i++) {
 				for (int j = 0; j<27; j++) { 
@@ -103,7 +111,28 @@ public class Main extends PApplet{
 				}
 			}
 			dante.paint();
-			text(puntaje,346, 83);
+			text(pointScore,246, 83);
+			
+			time=true;
+			if (time ==true) {
+			if (frameCount % 30 == 0) {
+				sec += 1;
+			}
+			if (sec == 60) {
+				sec = 0;
+				min += 1;
+			}
+			}
+			text(min + " : " + sec, 250, 545);
+			if (pointScore == 132000) {
+				state=5;
+				time=false;
+			}
+			break;
+		case 5:
+			win.drawScreen ();
+			text(pointScore, 170,300);
+			text(min + " : " + sec, 170, 320);
 			break;
 		}
 	}
@@ -115,33 +144,50 @@ public class Main extends PApplet{
 		switch (state) {
 		case 1:
 			if (mouseX > 83 && mouseX < 83 + 213
-					&& mouseY > 291 && mouseY < 291+51 )
-				state = 2;
+					&& mouseY > 291 && mouseY < 291+51 ) {
+				state = 2;}
 
 			if (mouseX > posX && mouseX < posX + 213
-					&& mouseY > 357 && mouseY < 357 +51) 
-				state = 3;
+					&& mouseY > 357 && mouseY < 357 +51) { 
+				state = 3;}
 
 			if (mouseX > posX && mouseX < posX + 213
-					&& mouseY > 487 && mouseY < 487 + 51) 
-				exit (); 
+					&& mouseY > 487 && mouseY < 487 + 51) {
+				exit (); }
 			break;
 
 		case 2:
 			if (mouseX > 83 && mouseX < 83 + 184
-					&& mouseY > 271 && mouseY < 271 + 38)
+					&& mouseY > 271 && mouseY < 271 + 38) {
 
 				newPlayer.setName(String.join("", typeName));
+			}
 
 			if (mouseX > posX && mouseX < posX + 213
-					&& mouseY > 357 && mouseY < 357 +51) 
+					&& mouseY > 357 && mouseY < 357 +51) { 
 				state = 4;
+			}
+			break;
 		case 3:
 			if (mouseX > 63 && mouseX < 63 + 249
-					&& mouseY > 494 && mouseY < 494 + 56)
+					&& mouseY > 494 && mouseY < 494 + 56) {
 
 				state=1;
-
+			}
+			break;
+		case 4:
+			if (mouseX > 205 && mouseX < 205 + 147
+					&& mouseY > 591 && mouseY < 591 + 56) {
+				state=2;
+			}
+			break;
+		case 5:
+			if (mouseX > 61 && mouseX < 61 + 249
+					&& mouseY > 358 && mouseY < 358 + 56) {
+				state=4;}
+			if (mouseX > 61 && mouseX < 61 + 249
+					&& mouseY > 431 && mouseY < 431 + 56) {
+				state=1;}
 		}
 	}
 	public void keyPressed() {
@@ -163,14 +209,13 @@ public class Main extends PApplet{
 				}if(matrix[matY][matX]==0) {
 					point=true;
 					if (point ==true) {
-						puntaje+=500;
+						pointScore+=500;
 					}					
-					matrix[matY][matX] = 8;
-					
-					if (matrix[matY][matX]==8)
-						point =false;
-				}
-				 
+					matrix[matY][matX] = 8;}
+
+				if (matrix[matY][matX]==8) {
+					point =false;
+				}				
 				break;
 			case LEFT:
 				if(matrix[matY][matX-1]!=1) {
@@ -180,12 +225,12 @@ public class Main extends PApplet{
 				if(matrix[matY][matX]==0) {
 					point=true;
 					if (point ==true) {
-						puntaje+=500;
+						pointScore+=500;
 					}					
-					matrix[matY][matX] = 8;
-					
-					if (matrix[matY][matX]==8)
-						point =false;
+					matrix[matY][matX] = 8;}
+
+				if (matrix[matY][matX]==8) {
+					point =false;
 				}
 				break;
 			case UP:
@@ -195,12 +240,12 @@ public class Main extends PApplet{
 				}if(matrix[matY][matX]==0) {
 					point=true;
 					if (point ==true) {
-						puntaje+=500;
+						pointScore+=500;
 					}					
-					matrix[matY][matX] = 8;
-					
-					if (matrix[matY][matX]==8)
-						point =false;
+					matrix[matY][matX] = 8;}
+
+				if (matrix[matY][matX]==8) {
+					point =false;
 				}
 				break;
 			case DOWN:
@@ -210,12 +255,12 @@ public class Main extends PApplet{
 				}if(matrix[matY][matX]==0) {
 					point=true;
 					if (point ==true) {
-						puntaje+=500;
+						pointScore+=500;
 					}					
-					matrix[matY][matX] = 8;
-					
-					if (matrix[matY][matX]==8)
-						point =false;
+					matrix[matY][matX] = 8;}
+
+				if (matrix[matY][matX]==8) {
+					point =false;
 				}
 				break;
 			default:
