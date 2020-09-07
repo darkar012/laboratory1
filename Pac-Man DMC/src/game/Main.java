@@ -3,18 +3,10 @@ package game;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
-import processing.core.PFont;
 import processing.core.PImage;
 
 public class Main extends PApplet{
-	//PImage bg;
-	/*public Map1 maze;
-		public Dante player;
-		public boolean movLeft;
-		public boolean movRight;
-		public boolean movUp;
-		public boolean movDown;
-		int y;*/
+
 	Dante dante;
 	//screens
 	Menu menu;
@@ -22,7 +14,9 @@ public class Main extends PApplet{
 	Score score;
 	Level1 level;
 	ArrayList<String> typeName;
+	boolean point=false;
 	int state;
+	int puntaje = 0;
 	int [][] matrix= {
 			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -58,7 +52,7 @@ public class Main extends PApplet{
 	int matX, matY;
 	int x,y;
 	PImage tile;
-
+	PImage orb;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main ("game.Main");
@@ -75,36 +69,15 @@ public class Main extends PApplet{
 		state=1;
 	}
 	public void setup() {
-		 col = 25;
-		 row = 27;
-		 matY=1;
-		 matX=1;
+		col = 25;
+		row = 27;
+		matY=1;
+		matX=1;
 		tile= loadImage("./image/tile.png");
-		/*bg = loadImage("map.png");
-			player = new Dante(92,92,5, this);
-			maze = new Map1(null, 10, 10 ,0, 200, this);*/
+		orb= loadImage("./image/orb.png");
 	}
 	public void draw() {
-		/*background(255);
-			maze.paintArray();
-			player.paint();
-			if (movRight==true){
 
-				player.moveRight();
-			}
-
-			if (movLeft==true){
-
-				player.moveLeft();
-			}
-			if (movUp==true){
-
-				player.moveUp();
-			}
-
-			if (movDown==true){
-
-				player.moveDown();*/
 		switch (state) {
 		case 1:
 			menu.drawScreen();
@@ -116,7 +89,6 @@ public class Main extends PApplet{
 			score.drawScreen();
 			break;
 		case 4:
-			//dante.
 			level.drawScreen();
 			for (int i = 0; i<25; i++) {
 				for (int j = 0; j<27; j++) { 
@@ -124,7 +96,14 @@ public class Main extends PApplet{
 						image(tile,i*15,j*15+110);}
 				}
 			}
+			for (int i = 0; i<25; i++) {
+				for (int j = 0; j<27; j++) { 
+					if (matrix[j][i] == 0) { 
+						image(orb,i*15,j*15+110);}
+				}
+			}
 			dante.paint();
+			text(puntaje,346, 83);
 			break;
 		}
 	}
@@ -175,69 +154,77 @@ public class Main extends PApplet{
 				typeName.add(key+"");
 			}
 		case 4:
-			
+
 			switch (keyCode) {
 			case RIGHT:
-				if(matrix[matY][matX+1]!=1) {
+				if(matrix[matY][matX+1]!=1 ) {
 					dante.posx += 15;
-					//dante.paint();
 					matX++;
-					System.out.println(matX);
+				}if(matrix[matY][matX]==0) {
+					point=true;
+					if (point ==true) {
+						puntaje+=500;
+					}					
+					matrix[matY][matX] = 8;
+					
+					if (matrix[matY][matX]==8)
+						point =false;
 				}
+				 
 				break;
 			case LEFT:
 				if(matrix[matY][matX-1]!=1) {
 					dante.posx -= 15;
 					matX--;
 				}
+				if(matrix[matY][matX]==0) {
+					point=true;
+					if (point ==true) {
+						puntaje+=500;
+					}					
+					matrix[matY][matX] = 8;
+					
+					if (matrix[matY][matX]==8)
+						point =false;
+				}
 				break;
 			case UP:
 				if(matrix[matY-1][matX]!=1) {
 					dante.posy -= 15;
 					matY--;
+				}if(matrix[matY][matX]==0) {
+					point=true;
+					if (point ==true) {
+						puntaje+=500;
+					}					
+					matrix[matY][matX] = 8;
+					
+					if (matrix[matY][matX]==8)
+						point =false;
 				}
 				break;
 			case DOWN:
 				if(matrix[matY+1][matX]!=1) {
 					dante.posy += 15;
 					matY++;
+				}if(matrix[matY][matX]==0) {
+					point=true;
+					if (point ==true) {
+						puntaje+=500;
+					}					
+					matrix[matY][matX] = 8;
+					
+					if (matrix[matY][matX]==8)
+						point =false;
 				}
 				break;
 			default:
 				break;
 			}
 		}
-		}
-
-		/*if(keyCode == RIGHT) {
-				movRight = true;
-			}
-			if(keyCode == LEFT) {
-				movLeft = true;
-			}
-			if(keyCode == DOWN) {
-				movDown = true;
-			}
-			if(keyCode == UP) {
-				movUp = true;
-			}
-
-		}
-		public void keyReleased() {
-
-			if(keyCode == RIGHT) {
-				movRight = false;
-			}
-			if(keyCode == LEFT) {
-				movLeft = false;
-			}
-			if(keyCode == DOWN) {
-				movDown = false;
-			}
-			if(keyCode == UP) {
-				movUp = false;
-			}*/
 	}
+
+}
 
 
 
