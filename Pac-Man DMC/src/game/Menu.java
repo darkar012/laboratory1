@@ -1,8 +1,6 @@
 package game;
 import processing.core.*;
-
-
-
+//first enemy
 public class Menu extends Screen{
 	
 	public Menu(PApplet app) {

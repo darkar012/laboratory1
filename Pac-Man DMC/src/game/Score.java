@@ -1,6 +1,6 @@
 package game;
 import processing.core.*;
-
+//scores screen
 public class Score extends Screen {
 	
 	public Score (PApplet app) {

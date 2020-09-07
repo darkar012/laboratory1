@@ -1,7 +1,7 @@
 package game;
 import processing.core.PApplet;
 import processing.core.PImage;
- 
+ //second enemy
 public class Empusa extends Enemy{
 	
 	public Empusa (PApplet app) {

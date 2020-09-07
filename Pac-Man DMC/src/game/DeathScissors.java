@@ -1,7 +1,7 @@
 package game;
 import processing.core.PApplet;
 import processing.core.PImage;
- 
+ //first enemy
 public class DeathScissors extends Enemy{
 	
 	public DeathScissors(PApplet app) {

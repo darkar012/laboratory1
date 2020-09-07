@@ -2,7 +2,7 @@ package game;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-
+ //player character
 public class Dante extends PApplet {
 	PApplet app;
 	PImage dante;

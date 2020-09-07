@@ -1,6 +1,6 @@
 package game;
 import processing.core.*;
-
+// new player screen
 public class NewPlayer extends Screen {
 
 	String name;
