@@ -8,6 +8,10 @@ import processing.core.PImage;
 public class Main extends PApplet{
 
 	Dante dante;
+	DeathScissors ds;
+	Nobody nobody;
+	ScaredDreamer sd;
+	Empusa empusa;
 	//screens
 	Menu menu;
 	NewPlayer newPlayer;
@@ -71,6 +75,10 @@ public class Main extends PApplet{
 		win= new Win(this);
 		typeName= new ArrayList<String>();
 		dante= new Dante (posX, posY, this);
+		empusa = new Empusa (this);
+		ds = new DeathScissors (this);
+		nobody = new Nobody (this);
+		sd = new ScaredDreamer (this);
 		state=1;
 	}
 	public void setup() {
@@ -111,11 +119,15 @@ public class Main extends PApplet{
 				}
 			}
 			dante.paint();
+			ds.paintEnemy();
+			nobody.paintEnemy();
+			sd.paintEnemy();
+			empusa.paintEnemy();
 			text(pointScore,246, 83);
 			
 			time=true;
 			if (time ==true) {
-			if (frameCount % 30 == 0) {
+			if (frameCount % 60 == 0) {
 				sec += 1;
 			}
 			if (sec == 60) {
